@@ -966,7 +966,7 @@ highlight! link TroubleCode Grey
 call gruvbox_material#highlight('TelescopeMatching', s:palette.green, s:palette.none, 'bold')
 highlight! link TelescopeBorder Grey
 highlight! link TelescopePromptPrefix Orange
-highlight! link TelescopeSelection DiffAdd
+highlight! link TelescopeSelection Blue
 " }}}
 " lewis6991/gitsigns.nvim {{{
 highlight! link GitSignsAdd GreenSign
@@ -1361,7 +1361,7 @@ highlight! link DirvishArg Yellow
 " syn_begin: NvimTree {{{
 " https://github.com/kyazdani42/nvim-tree.lua
 highlight! link NvimTreeSymlink Fg
-highlight! link NvimTreeFolderName Green
+highlight! link NvimTreeFolderName Fg
 highlight! link NvimTreeRootFolder Grey
 highlight! link NvimTreeFolderIcon Orange
 highlight! link NvimTreeEmptyFolderName Green
@@ -1461,7 +1461,7 @@ highlight! link NeogitFilePath diffFile
 " syn_end }}}
 " syn_begin: dashboard {{{
 " https://github.com/glepnir/dashboard-nvim
-highlight! link DashboardHeader Yellow
+highlight! link DashboardHeader Fg
 highlight! link DashboardCenter Green
 highlight! link DashboardShortcut Red
 highlight! link DashboardFooter Orange
