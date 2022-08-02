@@ -1592,6 +1592,8 @@ highlight! link htmlTagName OrangeItalic
 highlight! link htmlArg Aqua
 highlight! link htmlScriptTag Purple
 highlight! link htmlSpecialTagName RedItalic
+highlight! link TSTag Green
+highlight! link TSTagDelimiter Blue
 " }}}
 " syn_end }}}
 " syn_begin: xml {{{
