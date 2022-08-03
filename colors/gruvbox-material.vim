@@ -10,7 +10,7 @@
 let s:configuration = gruvbox_material#get_configuration()
 let s:palette = gruvbox_material#get_palette(s:configuration.background, s:configuration.foreground, s:configuration.colors_override)
 let s:path = expand('<sfile>:p') " the path of this script
-let s:last_modified = 'Sat Jul 16 13:30:07 UTC 2022'
+let s:last_modified = 'Wed Aug  3 11:54:10 UTC 2022'
 let g:gruvbox_material_loaded_file_types = []
 
 if !(exists('g:colors_name') && g:colors_name ==# 'gruvbox-material' && s:configuration.better_performance)
@@ -554,6 +554,14 @@ highlight! link TSVariableBuiltin BlueItalic
 " neoclide/coc.nvim {{{
 call gruvbox_material#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
 call gruvbox_material#highlight('CocSearch', s:palette.green, s:palette.none, 'bold')
+call gruvbox_material#highlight('CocPumSearch', s:palette.green, s:palette.none, 'bold')
+call gruvbox_material#highlight('CocMarkdownHeader', s:palette.orange, s:palette.none, 'bold')
+call gruvbox_material#highlight('CocMarkdownLink', s:palette.green, s:palette.none, 'underline')
+highlight! link CocMarkdownCode Green
+highlight! link CocPumShortcut Grey
+highlight! link CocPumVirtualText LineNr
+highlight! link CocPumMenu Pmenu
+highlight! link CocMenuSel PmenuSel
 highlight! link CocDisabled Grey
 highlight! link CocSnippetVisual DiffAdd
 highlight! link CocInlayHint Grey
@@ -1086,28 +1094,9 @@ highlight! link TargetFileName Grey
 call gruvbox_material#highlight('InclineNormalNC', s:palette.grey1, s:palette.bg3)
 " }}}
 " echasnovski/mini.nvim {{{
-highlight! link MiniCompletionActiveParameter LspSignatureActiveParameter
-
-highlight! link MiniCursorword CurrentWord
-highlight! link MiniCursorwordCurrent CurrentWord
-
-highlight! link MiniIndentscopeSymbol Grey
-call gruvbox_material#highlight('MiniIndentscopePrefix', s:palette.none, s:palette.none, 'nocombine') " Make it invisible
-
-highlight! link MiniJump Search
-
+call gruvbox_material#highlight('MiniIndentscopePrefix', s:palette.none, s:palette.none, 'nocombine')
 call gruvbox_material#highlight('MiniJump2dSpot', s:palette.orange, s:palette.none, 'bold,nocombine')
-
 call gruvbox_material#highlight('MiniStarterCurrent', s:palette.none, s:palette.none, 'nocombine')
-highlight! link MiniStarterFooter Orange
-highlight! link MiniStarterHeader Yellow
-highlight! link MiniStarterInactive Comment
-highlight! link MiniStarterItem Normal
-call gruvbox_material#highlight('MiniStarterItemBullet', s:palette.grey1, s:palette.none)
-call gruvbox_material#highlight('MiniStarterItemPrefix', s:palette.yellow, s:palette.none)
-highlight! link MiniStarterSection Title
-call gruvbox_material#highlight('MiniStarterQuery', s:palette.blue, s:palette.none)
-
 call gruvbox_material#highlight('MiniStatuslineDevinfo', s:palette.grey2, s:palette.bg_statusline2)
 call gruvbox_material#highlight('MiniStatuslineFileinfo', s:palette.grey2, s:palette.bg_statusline2)
 call gruvbox_material#highlight('MiniStatuslineFilename', s:palette.grey2, s:palette.bg_statusline1)
@@ -1118,23 +1107,41 @@ call gruvbox_material#highlight('MiniStatuslineModeNormal', s:palette.bg0, s:pal
 call gruvbox_material#highlight('MiniStatuslineModeOther', s:palette.bg0, s:palette.purple, 'bold')
 call gruvbox_material#highlight('MiniStatuslineModeReplace', s:palette.bg0, s:palette.bg_yellow, 'bold')
 call gruvbox_material#highlight('MiniStatuslineModeVisual', s:palette.bg0, s:palette.bg_red, 'bold')
-
-highlight! link MiniSurround IncSearch
-
 call gruvbox_material#highlight('MiniTablineCurrent', s:palette.fg1, s:palette.bg5)
-highlight! link MiniTablineFill TabLineFill
 call gruvbox_material#highlight('MiniTablineHidden', s:palette.grey1, s:palette.bg3)
 call gruvbox_material#highlight('MiniTablineModifiedCurrent', s:palette.blue, s:palette.bg5)
 call gruvbox_material#highlight('MiniTablineModifiedHidden', s:palette.grey1, s:palette.bg3)
 call gruvbox_material#highlight('MiniTablineModifiedVisible', s:palette.blue, s:palette.bg3)
 call gruvbox_material#highlight('MiniTablineTabpagesection', s:palette.bg0, s:palette.grey2, 'bold')
 call gruvbox_material#highlight('MiniTablineVisible', s:palette.fg1, s:palette.bg3)
-
 call gruvbox_material#highlight('MiniTestEmphasis', s:palette.none, s:palette.none, 'bold')
 call gruvbox_material#highlight('MiniTestFail', s:palette.red, s:palette.none, 'bold')
 call gruvbox_material#highlight('MiniTestPass', s:palette.green, s:palette.none, 'bold')
-
 call gruvbox_material#highlight('MiniTrailspace', s:palette.none, s:palette.red)
+highlight! link MiniStarterItemBullet Grey
+highlight! link MiniStarterItemPrefix Yellow
+highlight! link MiniStarterQuery Blue
+highlight! link MiniCompletionActiveParameter LspSignatureActiveParameter
+highlight! link MiniCursorword CurrentWord
+highlight! link MiniCursorwordCurrent CurrentWord
+highlight! link MiniIndentscopeSymbol Grey
+highlight! link MiniJump Search
+highlight! link MiniStarterFooter Orange
+highlight! link MiniStarterHeader Yellow
+highlight! link MiniStarterInactive Comment
+highlight! link MiniStarterItem Normal
+highlight! link MiniStarterSection Title
+highlight! link MiniSurround IncSearch
+highlight! link MiniTablineFill TabLineFill
+" }}}
+" ggandor/lightspeed.nvim {{{
+call gruvbox_material#highlight('LightspeedLabel', s:palette.red, s:palette.none, 'bold,underline')
+call gruvbox_material#highlight('LightspeedLabelDistant', s:palette.blue, s:palette.none, 'bold,underline')
+call gruvbox_material#highlight('LightspeedShortcut', s:palette.bg0, s:palette.red, 'bold')
+call gruvbox_material#highlight('LightspeedUnlabeledMatch', s:palette.fg0, s:palette.none, 'bold')
+call gruvbox_material#highlight('LightspeedPendingOpArea', s:palette.bg0, s:palette.green)
+highlight! link LightspeedMaskedChar Purple
+highlight! link LightspeedGreyWash Grey
 " }}}
 endif
 " }}}
@@ -1305,6 +1312,10 @@ highlight! link VistaPublic Green
 highlight! link VistaProtected Yellow
 highlight! link VistaPrivate Red
 " syn_end }}}
+" syn_begin: Outline {{{
+" https://github.com/simrat39/symbols-outline.nvim
+highlight! link FocusedSymbol NormalFloat
+" syn_end }}}
 " syn_begin: aerial {{{
 " https://github.com/stevearc/aerial.nvim
 highlight! link AerialLine CursorLine
@@ -1395,6 +1406,34 @@ highlight! link FernBranchSymbol FernBranchText
 highlight! link FernBranchText Green
 highlight! link FernWindowSelectIndicator TabLineSel
 highlight! link FernWindowSelectStatusLine TabLine
+" syn_end }}}
+" syn_begin: octo {{{
+" https://github.com/pwntester/octo.nvim
+call gruvbox_material#highlight('OctoViewer', s:palette.bg0, s:palette.blue)
+call gruvbox_material#highlight('OctoGreenFloat', s:palette.green, s:palette.bg3)
+call gruvbox_material#highlight('OctoRedFloat', s:palette.red, s:palette.bg3)
+call gruvbox_material#highlight('OctoPurpleFloat', s:palette.purple, s:palette.bg3)
+call gruvbox_material#highlight('OctoYellowFloat', s:palette.yellow, s:palette.bg3)
+call gruvbox_material#highlight('OctoBlueFloat', s:palette.blue, s:palette.bg3)
+call gruvbox_material#highlight('OctoGreyFloat', s:palette.grey1, s:palette.bg3)
+call gruvbox_material#highlight('OctoBubbleGreen', s:palette.bg0, s:palette.green)
+call gruvbox_material#highlight('OctoBubbleRed', s:palette.bg0, s:palette.red)
+call gruvbox_material#highlight('OctoBubblePurple', s:palette.bg0, s:palette.purple)
+call gruvbox_material#highlight('OctoBubbleYellow', s:palette.bg0, s:palette.yellow)
+call gruvbox_material#highlight('OctoBubbleBlue', s:palette.bg0, s:palette.blue)
+call gruvbox_material#highlight('OctoBubbleGrey', s:palette.bg0, s:palette.grey1)
+highlight! link OctoGreen Green
+highlight! link OctoRed Red
+highlight! link OctoPurple Purple
+highlight! link OctoYellow Yellow
+highlight! link OctoBlue Blue
+highlight! link OctoGrey Grey
+highlight! link OctoBubbleDelimiterGreen Green
+highlight! link OctoBubbleDelimiterRed Red
+highlight! link OctoBubbleDelimiterPurple Purple
+highlight! link OctoBubbleDelimiterYellow Yellow
+highlight! link OctoBubbleDelimiterBlue Blue
+highlight! link OctoBubbleDelimiterGrey Grey
 " syn_end }}}
 " syn_begin: netrw {{{
 " https://www.vim.org/scripts/script.php?script_id=1075

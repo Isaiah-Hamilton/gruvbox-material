@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 - Optimize `b0o/incline.nvim`.
 - Optimize winbar.
 - Optimize `echasnovski/mini.nvim`.
+- Support coc popup menu.
+- Optimize `ggandor/lightspeed.nvim`.
+- Optimize `pwntester/octo.nvim`.
+- Optimize `simrat39/symbols-outline.nvim`.
 
 ### Changed
 
