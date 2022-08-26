@@ -10,7 +10,7 @@
 let s:configuration = gruvbox_material#get_configuration()
 let s:palette = gruvbox_material#get_palette(s:configuration.background, s:configuration.foreground, s:configuration.colors_override)
 let s:path = expand('<sfile>:p') " the path of this script
-let s:last_modified = 'Thu Aug  4 02:22:33 UTC 2022'
+let s:last_modified = 'Thu Aug 25 10:43:01 UTC 2022'
 let g:gruvbox_material_loaded_file_types = []
 
 if !(exists('g:colors_name') && g:colors_name ==# 'gruvbox-material' && s:configuration.better_performance)
@@ -559,12 +559,12 @@ call gruvbox_material#highlight('CocMarkdownHeader', s:palette.orange, s:palette
 call gruvbox_material#highlight('CocMarkdownLink', s:palette.green, s:palette.none, 'underline')
 highlight! link CocMarkdownCode Green
 highlight! link CocPumShortcut Grey
-highlight! link CocPumVirtualText LineNr
+highlight! link CocPumVirtualText Grey
 highlight! link CocPumMenu Pmenu
 highlight! link CocMenuSel PmenuSel
 highlight! link CocDisabled Grey
 highlight! link CocSnippetVisual DiffAdd
-highlight! link CocInlayHint Grey
+highlight! link CocInlayHint LineNr
 highlight! link CocNotificationProgress Green
 highlight! link CocNotificationButton PmenuSel
 highlight! link CocSemClass TSType
@@ -624,6 +624,28 @@ highlight! link LspWarningHighlight WarningText
 highlight! link LspInformationHighlight InfoText
 highlight! link LspHintHighlight HintText
 highlight! link lspReference CurrentWord
+highlight! link lspInlayHintsType LineNr
+highlight! link lspInlayHintsParameter LineNr
+highlight! link LspSemanticType TSType
+highlight! link LspSemanticClass TSType
+highlight! link LspSemanticEnum TSType
+highlight! link LspSemanticInterface TSType
+highlight! link LspSemanticStruct TSType
+highlight! link LspSemanticTypeParameter TSType
+highlight! link LspSemanticParameter TSParameter
+highlight! link LspSemanticVariable TSVariable
+highlight! link LspSemanticProperty TSProperty
+highlight! link LspSemanticEnumMember TSVariableBuiltin
+highlight! link LspSemanticEvents TSLabel
+highlight! link LspSemanticFunction TSFunction
+highlight! link LspSemanticMethod TSMethod
+highlight! link LspSemanticKeyword TSKeyword
+highlight! link LspSemanticModifier TSOperator
+highlight! link LspSemanticComment TSComment
+highlight! link LspSemanticString TSString
+highlight! link LspSemanticNumber TSNumber
+highlight! link LspSemanticRegexp TSStringRegex
+highlight! link LspSemanticOperator TSOperator
 " }}}
 " ycm-core/YouCompleteMe {{{
 highlight! link YcmErrorSign RedSign
@@ -632,6 +654,28 @@ highlight! link YcmErrorLine ErrorLine
 highlight! link YcmWarningLine WarningLine
 highlight! link YcmErrorSection ErrorText
 highlight! link YcmWarningSection WarningText
+highlight! link YcmInlayHint LineNr
+if !has('nvim') && has('textprop') && !exists('g:YCM_HIGHLIGHT_GROUP')
+  let g:YCM_HIGHLIGHT_GROUP = {
+        \ 'typeParameter': 'TSType',
+        \ 'parameter': 'TSParameter',
+        \ 'variable': 'TSVariable',
+        \ 'property': 'TSProperty',
+        \ 'enumMember': 'TSVariableBuiltin',
+        \ 'event': 'TSLabel',
+        \ 'member': 'TSVariable',
+        \ 'method': 'TSMethod',
+        \ 'class': 'TSType',
+        \ 'namespace': 'TSNamespace',
+        \ }
+  for tokenType in keys( g:YCM_HIGHLIGHT_GROUP )
+    try
+      call prop_type_add( 'YCM_HL_' . tokenType,
+            \ { 'highlight': g:YCM_HIGHLIGHT_GROUP[ tokenType ] } )
+    catch
+    endtry
+  endfor
+endif
 " }}}
 " dense-analysis/ale {{{
 highlight! link ALEError ErrorText
@@ -834,6 +878,9 @@ highlight! link CurrentWordTwins CurrentWord
 " }}}
 " RRethy/vim-illuminate {{{
 highlight! link illuminatedWord CurrentWord
+highlight! link IlluminatedWordText CurrentWord
+highlight! link IlluminatedWordRead CurrentWord
+highlight! link IlluminatedWordWrite CurrentWord
 " }}}
 " itchyny/vim-cursorword {{{
 highlight! link CursorWord0 CurrentWord
@@ -931,6 +978,12 @@ highlight! link agitDiffHeader Purple
 " }}}
 " voldikss/vim-floaterm {{{
 highlight! link FloatermBorder Grey
+" }}}
+" MattesGroeger/vim-bookmarks {{{
+highlight! link BookmarkSign BlueSign
+highlight! link BookmarkAnnotationSign GreenSign
+highlight! link BookmarkLine DiffChange
+highlight! link BookmarkAnnotationLine DiffAdd
 " }}}
 if has('nvim')
 " hrsh7th/nvim-cmp {{{
